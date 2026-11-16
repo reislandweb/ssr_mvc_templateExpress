@@ -20,3 +20,11 @@ html
                     a(href="/mission") Ir a Mision
 
         img(src="/assets/home.png", alt="about" class="img_logo")
+
+        form(action='/film' method='POST')
+            label(for="title") Nombre pelicula:
+            br
+            input(type="text" name="title" placeholder="Ej. Matrix, Star Wars...")
+            br
+            button(type="submit") Buscar 
+

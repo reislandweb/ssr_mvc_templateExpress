@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title= pelicula.Title
+  body
+    h1= pelicula.Title
+    p Año: #{pelicula.Year}
+    // Si la API te devuelve la imagen (Poster)
+    img(src=pelicula.Poster, alt="Póster de la película")
