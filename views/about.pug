@@ -1,0 +1,26 @@
+html 
+    head 
+        title=about 
+        link(rel='stylesheet', href='/css/style.css')
+
+    body 
+        // En Pug, los atributos van entre paréntesis
+        nav 
+            h1= titulo
+            p= descripcion
+            ul 
+                li 
+                    a(href="/") Ir a Home
+                li 
+                    a(href="/contact") Ir a Contacto
+                li 
+                    a(href="/location") Ir a Localizacion
+                li 
+                    a(href="/mission") Ir a Mision
+                    
+            img(src="/assets/about.png", alt="about" class="img_logo")
+
+
+
+
+

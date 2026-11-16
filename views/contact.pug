@@ -1,0 +1,21 @@
+html 
+    head 
+        title=about 
+        link(rel='stylesheet', href='/css/style.css')
+
+    body 
+        h1 Bienvenido a Contacto
+        p Esta es la página de contacto.
+        // En Pug, los atributos van entre paréntesis
+        nav 
+            ul 
+                li 
+                    a(href="/") Ir a Home 
+                li 
+                    a(href="/about") Ir a About
+                li 
+                    a(href="/location") Ir a Localizacion
+                li 
+                    a(href="/mission") Ir a Mision
+
+        img(src="/assets/contact.png", alt="about" class="img_logo")

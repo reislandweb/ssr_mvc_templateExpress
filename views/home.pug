@@ -1,0 +1,22 @@
+html 
+    head 
+        title=about 
+        link(rel='stylesheet', href='/css/style.css')
+
+    body 
+        h1 Bienvenido a la Home
+        p Esta es la página principal.
+
+        // En Pug, los atributos van entre paréntesis
+        nav 
+            ul 
+                li 
+                    a(href="/about") Ir a About
+                li 
+                    a(href="/contact") Ir a Contacto
+                li 
+                    a(href="/location") Ir a Localizacion
+                li 
+                    a(href="/mission") Ir a Mision
+
+        img(src="/assets/home.png", alt="about" class="img_logo")

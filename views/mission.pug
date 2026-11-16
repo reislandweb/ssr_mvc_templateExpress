@@ -1,0 +1,22 @@
+html 
+    head 
+        title=about 
+        link(rel='stylesheet', href='/css/style.css')
+
+    body 
+        h1 Bienvenido a Mision
+        p Esta es la página de Misiones.
+
+        // En Pug, los atributos van entre paréntesis
+        nav 
+            ul 
+                li 
+                    a(href="/about") Ir a About
+                li 
+                    a(href="/contact") Ir a Contacto
+                li 
+                    a(href="/location") Ir a Localizacion
+                li 
+                    a(href="/") Ir a Home
+
+        img(src="/assets/mission.png", alt="about" class="img_logo")

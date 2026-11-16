@@ -1,0 +1,64 @@
+## Dependencias:
+    dotenv
+    express
+    mongoose
+    pug
+    morgan
+
+## Capetas
+    mkdir config controllers models public routes services views app.js
+
+Archivos a crear
+
+touch config/db_mongo.js
+
+touch controllers/products.controllers.js controllers/products.web.controllers.js
+
+touch models/products.model.js models/providers.model.js
+
+mkdir public/assets public/css public/js
+
+touch public/css/style.css public/js/script.js
+
+touch routes/products.routes.js routes/products.web.routes.js
+
+touch services/product.service.js services/providers.service.js
+
+touch views/home.pug views/about.pug views/location.pug views/mission.pug views/contact.pug
+
+## CONEXION DE ARCHIVOS
+
+1 - app.js => ROUTES/( bifurca API vs Web ) => CONTROLLERS/( prepara JSON vc PUG ) => SERVICE/( logica comun ) => MODELS/( esquemas Mongoose ) => CONFIG/DB_MONGO.js
+
+2 - Las carpetas PUBLIC y VIEWS express las lee dinamicamente cuando renderiza Pug
+
+## ORDEN LOGICO DE TRABAJO
+
+db_mongo => models => services => views y public => controllers => routes => app.js
+
+1. La conexión a la Base de Datos (config/)
+    1.1 - Empieza creando el archivo de conexión (db_mongo.js).
+    1.2 -  Configuras Mongoose para que se conecte a tu base de datos de MongoDB. Sin esto operativo, nada de lo demás podrá guardar ni leer datos.
+
+2. Los Modelos (models/)
+    2.1 - Porque los servicios y controladores necesitan saber qué estructura tienen los datos.
+    2.2 - Defines los esquemas de Mongoose (por ejemplo, products.model.js y providers.model.js). Si un modelo depende de otro (como un producto que referencia a un proveedor), crea primero el independiente y luego el dependiente.
+
+3. Los Servicios (services/)
+    3.1 - Aquí metes la lógica de negocio pura (las consultas a la base de datos con Mongoose: find(), create(), etc.).   
+    3.2 - Escribes funciones reutilizables (ej. product.service.js) que luego llamarán los controladores. 
+
+4. Las Vistas en Pug (views/) y la carpeta Public (public/)
+    4.1 - Antes de hacer los controladores web, necesitas tener claro qué plantillas Pug vas a renderizar (el home.pug, about.pug, un layout base, etc.) y dónde están tus estilos CSS o imágenes.
+
+5. Los Controladores (controllers/)
+    5.1 - Ya tienes los datos (modelos + servicios) y ya tienes dónde pintarlos (vistas Pug). Ahora toca unirlos.
+    5.2 - Creas el controlador web (products.web.controller.js) que llama al servicio para coger los datos y hace el res.render('vista', { datos }).
+
+6. Las Rutas (routes/)
+    6.1 - Las rutas son las que "escuchan" la URL del navegador y llaman al controlador correspondiente.
+    6.2 - Creas tus archivos de rutas (ej. products.web.routes.js) donde asocias cada URL con su función del controlador.
+
+7. El archivo principal (app.js)
+    7.1 - Es el pegamento de todo el proyecto.
+    7.2 - Configuras Express, defines el motor de plantillas (app.set('view engine', 'pug')), le dices dónde están las vistas (app.set('views', './views')) y montas todas tus rutas con app.use('/...', ...). Al final del todo, levantas el servidor con app.listen().
